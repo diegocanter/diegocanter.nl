@@ -249,3 +249,7 @@ footer a:hover{color:#fff}
 .tz-main .tz-note{margin-top:6px;color:#e3e7e3;font-size:.93rem}
 .status.done{background:#2e6b45;color:#dff5e6}
 @media (max-width:600px){.tz-row{grid-template-columns:1fr}}
+
+.partij .card{padding:22px 24px}
+.partij .card b{display:block;font-size:1.05rem;margin-bottom:6px}
+.partij .card p{margin:0;font-size:.95rem}
