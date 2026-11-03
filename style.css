@@ -253,3 +253,16 @@ footer a:hover{color:#fff}
 .partij .card{padding:22px 24px}
 .partij .card b{display:block;font-size:1.05rem;margin-bottom:6px}
 .partij .card p{margin:0;font-size:.95rem}
+
+/* zuidwest card */
+.zuidwest-card{margin-top:22px;padding:34px 36px;background:#1e4d31;border-color:#2f6e48;color:#fff}
+.zuidwest-card .tag{background:#2b6a44;color:#dff5e6;border-color:#3f8a5c}
+.zuidwest-card .tag .dot{background:var(--yellow)}
+.zuidwest-card h3{color:#fff;font-size:1.6rem;margin:12px 0 6px}
+.zw-head{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:end;margin-bottom:26px}
+.zw-head p{color:#d9eadf;margin:0}
+.zw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.zw-grid>div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px}
+.zw-grid b{display:block;margin-bottom:6px;color:#fff}
+.zw-grid p{margin:0;color:#e3efe7;font-size:.95rem}
+@media (max-width:960px){.zw-head,.zw-grid{grid-template-columns:1fr}.zuidwest-card{padding:26px 22px}}
