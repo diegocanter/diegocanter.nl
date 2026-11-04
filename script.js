@@ -100,3 +100,37 @@ if(tz){Array.from(tz.children).sort(function(a,b){return (b.dataset.date||"").lo
   window.addEventListener("hashchange",openHash); openHash();
   document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener("click",function(){ var s=document.getElementById(a.getAttribute("href").slice(1)); if(s&&s._open) s._open(); }); });
 })();
+
+// Automatisch open/dicht op scroll: het onderdeel in beeld klapt open, de rest klapt dicht
+(function(){
+  var secs=Array.from(document.querySelectorAll("section.collapsed, section[id]")).filter(function(s){return s._open;});
+  if(!secs.length) return;
+  var ticking=false, manualUntil=0;
+  function setOpen(sec,open){
+    if(sec.classList.contains("collapsed")!==open) return; // al in gewenste stand
+    var btn=sec.querySelector(".sec-toggle");
+    sec.classList.toggle("collapsed",!open);
+    if(btn){ btn.setAttribute("aria-expanded",open); btn.querySelector("span").textContent=open?"Toon minder":"Toon meer"; }
+  }
+  function update(){
+    ticking=false;
+    if(Date.now()<manualUntil) return;
+    var vh=window.innerHeight, best=null, bestTop=-1e9;
+    secs.forEach(function(s){
+      var r=s.getBoundingClientRect();
+      // het laagste onderdeel waarvan de kop al in de bovenste helft van het scherm staat = waar je bent
+      if(r.top< vh*0.55 && r.bottom>120 && r.top>bestTop){best=s;bestTop=r.top;}
+    });
+    secs.forEach(function(s){
+      if(s===best){ setOpen(s,true); return; }
+      var r=s.getBoundingClientRect();
+      if(r.top>=vh*0.9){ setOpen(s,false); } // onder beeld: dichtklappen (geen sprong)
+    });
+  }
+  window.addEventListener("scroll",function(){ if(!ticking){ ticking=true; requestAnimationFrame(update);} },{passive:true});
+  window.addEventListener("resize",update);
+  // handmatige klik op een knop: 4 seconden niet automatisch overrulen
+  document.querySelectorAll(".sec-toggle").forEach(function(b){ b.addEventListener("click",function(){ manualUntil=Date.now()+4000; }); });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener("click",function(){ manualUntil=Date.now()+1500; }); });
+  update();
+})();

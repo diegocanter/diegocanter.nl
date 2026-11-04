@@ -281,3 +281,5 @@ section.collapsed .sec-body{max-height:0;opacity:0}
 section:not(.collapsed) .sec-body{max-height:none;opacity:1}
 section.collapsed{padding-bottom:56px}
 section.collapsed .section-head{margin-bottom:0}
+
+section.no-anim .sec-body{transition:none !important}
