@@ -1,6 +1,6 @@
 // ===== Instellingen: vul deze twee in zodra je ze hebt =====
 // 1) Link van je Google Agenda afsprakenplanning (of Calendly / Cal.com)
-var AGENDA_URL = ""; // bijv. "https://calendar.google.com/calendar/appointments/schedules/XXXX"
+var AGENDA_URL = "https://cal.com/diego-canter/gesprek-met-diego?embed=true&theme=light&layout=month_view";
 // 2) Je Formspree-formulier-ID (gratis account op formspree.io)
 var FORMSPREE_ID = "xkjjkoqq"; // bijv. "xabcdefg"
 
